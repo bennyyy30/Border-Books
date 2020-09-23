@@ -156,8 +156,8 @@ std::istream& operator>>(std::istream& stream, BookList& bookList) {
 /***********************
  ** Constructor
  ***********************/
-// TO DO
-BookList::BookList(const std::size_t& newSize) {
+BookList::BookList(const std::size_t& newSize) : _capacity(newSize),
+  _bookArray(new Book[newSize]), _books_array_size(0) {
 }
 
 /************************
@@ -174,16 +174,16 @@ BookList& BookList::operator+=(const BookList& rhs) {
 /*********************
  ** Destructor
  *********************/
-// TO DO
 BookList::~BookList() {
+  delete [] _bookArray;
 }
 
 /***********************
  ** Queries or getters
  ***********************/
-// TO DO
 std::size_t BookList::size() const {
   // return the size of the dynamic array
+  return _books_array_size;
 }
 
 //TO DO
