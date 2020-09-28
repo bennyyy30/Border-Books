@@ -27,7 +27,7 @@ int main(int argc, char const *argv[]) {
   assertTrue("list20 - [10]._isbn", string("0446310786"), list20[10]._isbn);
 
   Book book1("The Catcher in the Rye", "J. D. Salinger", "7543321726", 5.99);
-  assertTrue("list20 - find(7543321726, The Catcher in the Rye, J. D. Salinger, 5.99)", size_t(7),list20.find(book1));
+  assertTrue("list20 - find(7543321726, The Catcher in the Rye, J. D. Salinger, 5.99)", size_t(7), list20.find(book1));
   assertTrue("list20 - [16]._price", 18.75, list20[16].get_price());
 
   BookList list30;
@@ -71,7 +71,7 @@ bool assertTrue(const string& nameOfTest, const float& expected, float& actual) 
          << "\033[0m" << nameOfTest << ": expected and actual " << actual << endl;
     testCount++;
     return true;
-}
+  }
   // Red colored text
   cout << "\033[31m" << "FAILED "
        << "\033[0m" << nameOfTest << ": expected " << expected << " but actual " << actual << endl;
@@ -86,7 +86,7 @@ bool assertTrue(const string& nameOfTest, const T& expected, const T& actual) {
          << "\033[0m" << nameOfTest << ": expected and actual " << actual << endl;
     testCount++;
     return true;
-}
+  }
   // Red colored text
   cout << "\033[31m" << "FAILED "
        << "\033[0m" << nameOfTest << ": expected " << expected << " but actually " << actual << endl;
