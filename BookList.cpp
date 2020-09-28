@@ -163,12 +163,18 @@ BookList::BookList(const std::size_t& newSize) : _capacity(newSize),
 /************************
  ** Assignment operator
  ************************/
-// TO DO
 BookList& BookList::operator+=(const BookList& rhs) {
   // Concatenate the right-hand side book list of books to this list
   // by repeatedly adding each book at the end of the current book list
   // as long as it does not exceed <_capacity>.
   // If exceeds, then stop adding.
+  std::size_t i = 0;
+  while (_books_array_size < _capacity && i < rhs.size()) {
+    _bookArray[_books_array_size] = rhs[i];
+    _books_array_size++;
+    ++i;
+  }
+  return *this;
 }
 
 /*********************
@@ -186,11 +192,20 @@ std::size_t BookList::size() const {
   return _books_array_size;
 }
 
-//TO DO
 std::size_t BookList::find(const Book& book ) const {
   // Locate the book in this book list and return the zero-based position
   // of that book. If the book does not exist, return the size of this
   // book list as an indicator the book does not exist.
+  const std::size_t BookListSize = size();
+  for (std::size_t i = 0; i < BookListSize; ++i) {
+    if (_bookArray[i].get_isbn() == book.get_isbn() &&
+        _bookArray[i].get_title() == book.get_title() &&
+        _bookArray[i].get_author() == book.get_author() &&
+        _bookArray[i].get_price() == book.get_price()) {
+          return i;
+    }
+  }
+  return BookListSize;
 }
 
 Book BookList::operator[](std::size_t index) const {
